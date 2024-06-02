@@ -1,35 +1,41 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: linear-gradient(#7aceb0, #43685a);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.grid .applicationContainer {
+  margin-top: 10%;
+  border-radius: 15pt;
+  background-color: #0d0713;
+  grid-column: 3/11;
+}
+.grid .applicationContainer .textContainer1 {
+  color: white;
+  margin-top: 3%;
+  justify-content: center;
+  align-items: center;
+}
+.grid .applicationContainer .inputBox {
+  color: white;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid .applicationContainer .todoListBox {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+/*# sourceMappingURL=main.css.map */
