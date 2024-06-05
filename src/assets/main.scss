@@ -1,3 +1,10 @@
+@font-face {
+  font-family: M_PLUS_Rounded_1c;
+  src: url(fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf); // If the IDE shows an error IGNORE IT!!
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +13,7 @@ body {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+  font-family: M_PLUS_Rounded_1c;
 }
 
 .grid {
@@ -18,20 +26,79 @@ body {
     background-color: #0d0713;
     grid-column: 3/11;
 
-    .textContainer1 {
-      color: white;
+    .textContainers {
       margin-top: 3%;
+      display: flex;
       justify-content: center;
-      align-items: center;
+      text-align: center;
+
+      .textContainer1 {
+        padding-right: 3.8vw;
+        font-size: 40pt;
+        color: white;
+        text-align: left;
+
+
+        #datetime {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        #datetime2 {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .textContainer2 {
+        padding-left: 3.8vw;
+        font-size: 40pt;
+        color: white;
+        text-align: left;
+
+
+
+        #taskText {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        #flowText {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
     }
 
     .inputBox {
-      color: white;
       margin-top: 3%;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      input[type=text]{
+        padding-left: 0.4vw;
+        color: #777779;
+        background-color: #0d0713;
+        border: solid 1px #381d6b;
+        border-radius: 10pt;
+        height: 4vh;
+        width: 16vw;
+
+      }
+      .plusButton{
+        margin-left: 0.5vw;
+        height: 4.5vh;
+        width: 4.5vh;
+        background-color: #9e78cf;
+        border: solid 1px;
+        border-radius: 10pt;
+      }
+      .modal-fade{
+        background-color: #16101c;
+      }
     }
+
 
     .todoListBox {
       color: white;

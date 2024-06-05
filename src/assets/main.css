@@ -1,3 +1,8 @@
+@font-face {
+  font-family: M_PLUS_Rounded_1c;
+  src: url(fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf);
+  font-weight: normal;
+  font-style: normal; }
 body {
   margin: 0;
   padding: 0;
@@ -6,36 +11,69 @@ body {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-}
+  font-family: M_PLUS_Rounded_1c; }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
-.grid .applicationContainer {
-  margin-top: 10%;
-  border-radius: 15pt;
-  background-color: #0d0713;
-  grid-column: 3/11;
-}
-.grid .applicationContainer .textContainer1 {
-  color: white;
-  margin-top: 3%;
-  justify-content: center;
-  align-items: center;
-}
-.grid .applicationContainer .inputBox {
-  color: white;
-  margin-top: 3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.grid .applicationContainer .todoListBox {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  grid-template-columns: repeat(12, 1fr); }
+  .grid .applicationContainer {
+    margin-top: 10%;
+    border-radius: 15pt;
+    background-color: #0d0713;
+    grid-column: 3/11; }
+    .grid .applicationContainer .textContainers {
+      margin-top: 3%;
+      display: flex;
+      justify-content: center;
+      text-align: center; }
+      .grid .applicationContainer .textContainers .textContainer1 {
+        padding-right: 3.8vw;
+        font-size: 40pt;
+        color: white;
+        text-align: left; }
+        .grid .applicationContainer .textContainers .textContainer1 #datetime {
+          margin-top: 0;
+          margin-bottom: 0; }
+        .grid .applicationContainer .textContainers .textContainer1 #datetime2 {
+          margin-top: 0;
+          margin-bottom: 0; }
+      .grid .applicationContainer .textContainers .textContainer2 {
+        padding-left: 3.8vw;
+        font-size: 40pt;
+        color: white;
+        text-align: left; }
+        .grid .applicationContainer .textContainers .textContainer2 #taskText {
+          margin-top: 0;
+          margin-bottom: 0; }
+        .grid .applicationContainer .textContainers .textContainer2 #flowText {
+          margin-top: 0;
+          margin-bottom: 0; }
+    .grid .applicationContainer .inputBox {
+      margin-top: 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .grid .applicationContainer .inputBox input[type=text] {
+        padding-left: 0.4vw;
+        color: #777779;
+        background-color: #0d0713;
+        border: solid 1px #381d6b;
+        border-radius: 10pt;
+        height: 4vh;
+        width: 16vw; }
+      .grid .applicationContainer .inputBox .plusButton {
+        margin-left: 0.5vw;
+        height: 4.5vh;
+        width: 4.5vh;
+        background-color: #9e78cf;
+        border: solid 1px;
+        border-radius: 10pt; }
+      .grid .applicationContainer .inputBox .modal-fade {
+        background-color: #16101c; }
+    .grid .applicationContainer .todoListBox {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
 
 /*# sourceMappingURL=main.css.map */
