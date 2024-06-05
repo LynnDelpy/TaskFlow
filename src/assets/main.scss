@@ -1,11 +1,33 @@
+@font-face {
+  font-family: 'M_PLUS_Rounded_1c';
+  src: url('fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$background-gradient: linear-gradient(#7aceb0, #43685a);
+$container-bg-color: #0d0713;
+$border-color: #381d6b;
+$font-color-white: #ffffff;
+$font-color-gray: #777779;
+$font-color-purple: #9e78cf;
+$text-padding: 3.8vw;
+$container-padding: 3%;
+$todo-background: #16101c;
+
+ul {
+  list-style-type: none;
+}
+
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: linear-gradient(#7aceb0, #43685a);
+  background: $background-gradient;
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+  font-family: 'M_PLUS_Rounded_1c';
 }
 
 .grid {
@@ -14,31 +36,108 @@ body {
 
   .applicationContainer {
     margin-top: 10%;
-    border-radius: 15pt;
-    background-color: #0d0713;
-    grid-column: 3/11;
+    border-radius: 50pt;
+    height: 100vh;
+    background-color: $container-bg-color;
+    grid-column: 4 / 10;
+    padding: $container-padding;
 
-    .textContainer1 {
-      color: white;
-      margin-top: 3%;
+    .textContainers {
+      display: flex;
       justify-content: center;
-      align-items: center;
+      text-align: center;
+
+      .textContainer1,
+      .textContainer2 {
+        font-size: 50pt;
+        color: $font-color-white;
+        text-align: left;
+
+        #datetime, #datetime2,
+        #taskText, #flowText {
+          margin: 0;
+        }
+      }
+
+      .textContainer1 {
+        padding-right: $text-padding;
+      }
+
+      .textContainer2 {
+        padding-left: $text-padding;
+        margin-bottom: 5vh;
+      }
     }
 
     .inputBox {
-      color: white;
-      margin-top: 3%;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      input[type=text] {
+        padding-left: 0.4vw;
+        color: $font-color-gray;
+        background-color: $container-bg-color;
+        border: solid 1px $border-color;
+        border-radius: 10pt;
+        height: 4vh;
+        width: 17vw;
+      }
+
+      .addTodo {
+        margin-left: 0.5vw;
+        height: 4.5vh;
+        width: 4.5vh;
+        background-color: $font-color-purple;
+        border: solid 1px $border-color;
+        border-radius: 10pt;
+        color: $font-color-white;
+        font-size: 20pt;
+      }
     }
 
     .todoListBox {
-      color: white;
+      margin-top: 5vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      margin-right: 2vw;
+
+      .numberTodos {
+        color: $font-color-white;
+        font-size: 15pt;
+        margin-left: -11.5vw;
+        margin-bottom: 0;
+
+      }
+
+      .toDos {
+        background-color: $todo-background;
+        color: $font-color-purple;
+        padding: 1vw;
+        font-size: 15pt;
+        border-radius: 10pt;
+        margin-bottom: 1vh;
+        width: 19vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .todoEditButtons {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 0.5vw;
+
+          .toDoButtonCheck {
+            background-color: $todo-background;
+            border: solid 1px $todo-background;
+            border-radius: 10pt;
+            color: $font-color-purple;
+            font-size: 20pt;
+          }
+        }
+      }
     }
   }
 }
-
