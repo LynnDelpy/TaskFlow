@@ -1,3 +1,5 @@
+@import "popup.scss";
+
 @font-face {
   font-family: 'M_PLUS_Rounded_1c';
   src: url('fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf');
@@ -108,7 +110,6 @@ body {
         font-size: 15pt;
         margin-left: -11.5vw;
         margin-bottom: 0;
-
       }
 
       .toDos {
@@ -123,18 +124,28 @@ body {
         justify-content: space-between;
         align-items: center;
 
-        .todoEditButtons {
+        .todoContent {
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
           align-items: center;
-          gap: 0.5vw;
+          width: 100%;
 
-          .toDoButtonCheck {
-            background-color: $todo-background;
-            border: solid 1px $todo-background;
-            border-radius: 10pt;
-            color: $font-color-purple;
-            font-size: 20pt;
+          .todoTitle {
+            flex-grow: 1;
+            padding-right: 1vw;
+          }
+
+          .todoEditButtons {
+            display: flex;
+            gap: 0.5vw;
+
+            .toDoButtonCheck {
+              background-color: $todo-background;
+              border: solid 1px $todo-background;
+              border-radius: 10pt;
+              color: $font-color-purple;
+              font-size: 20pt;
+            }
           }
         }
       }

@@ -12,56 +12,76 @@
         </div>
       </div>
       <div class="inputBox">
-        <input v-model="newTodo" placeholder="Add a new task" type="text"/>
-        <button class="addTodo" @click="addTodo">+</button>
+        <input v-model="newTodo" placeholder="Add a new task" type="text" readonly/>
+        <button class="addTodo" @click="showPopup = true">+</button>
       </div>
       <div class="todoListBox">
-        <p class="numberTodos">Task to do  - {{ numberOfTodo }}</p>
+        <p class="numberTodos">Task to do - {{ numberOfTodo }}</p>
         <ul>
-          <li v-for="todo in todos" :key="todo.id" class="toDos">
-            {{ todo.text }}
-            <div class="todoEditButtons">
-              <button class="toDoButtonCheck">
-                <i class="fa-solid fa-check"></i>
-              </button>
-              <button class="toDoButtonCheck">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-              <button class="toDoButtonCheck">
-                <i class="fa-solid fa-trash"></i>
-              </button>
+          <li v-for="todoGroup in todos" :key="todoGroup.id" class="toDos">
+            <div v-if="todoGroup.type === 'todo'" class="todoContent">
+              <span class="todoTitle">{{ todoGroup.title }}</span>
+              <div class="todoEditButtons">
+                <button class="toDoButtonCheck">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="toDoButtonCheck">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="toDoButtonCheck">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
       </div>
     </div>
+    <Popup :visible="showPopup" @close="showPopup = false" @submit="handleSubmit"/>
   </main>
 </template>
 
 <script>
-import {computed, ref} from 'vue';
+import { computed, ref } from 'vue';
+import Popup from '/src/components/Popop.vue';
 
 export default {
+  components: {
+    Popup
+  },
   setup() {
     const todos = ref([]);
     const newTodo = ref('');
+    const showPopup = ref(false);
 
-    const addTodo = () => {
-      if (newTodo.value.trim()) {
-        todos.value.push({
-          id: Math.random().toString(36).slice(2, 7),
-          text: newTodo.value,
-          completed: false,
-        });
-        newTodo.value = '';
-      }
+    const addTodo = (todoData) => {
+      const todoGroup = {
+        id: Math.random().toString(36).slice(2, 7),
+        type: 'todo',
+        ...todoData,
+        completed: false,
+      };
+      todos.value.push(todoGroup);
+    };
+
+    const handleSubmit = (todoData) => {
+      addTodo(todoData);
+    };
+
+    const addInputFieldsGroup = () => {
+      const inputFieldsGroup = {
+        id: Math.random().toString(36).slice(2, 7),
+        type: 'inputGroup',
+        inputs: Array(6).fill().map(() => ({ text: '' }))
+      };
+      todos.value.push(inputFieldsGroup);
     };
 
     const now = new Date();
     const datetime = now.toLocaleString();
     const datetimeArray = ref(datetime.split("/", 3));
     const month = datetimeArray.value[1].split("/")[0];
-    let dateName = ref("");
+    const dateName = ref("");
 
     switch (month) {
       case "01":
@@ -108,9 +128,12 @@ export default {
       numberOfTodo,
       todos,
       newTodo,
+      showPopup,
       addTodo,
+      addInputFieldsGroup,
       datetimeArray,
       dateName,
+      handleSubmit
     };
   }
 };
