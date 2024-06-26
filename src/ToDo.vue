@@ -4,7 +4,7 @@
       <div class="textContainers">
         <div class="textContainer1">
           <p id="datetime">{{ datetimeArray[0] }}</p>
-          <p id="datetime2">{{ dateName }}</p>
+          <p id="datetime2">{{ dateNameRef }}</p>
         </div>
         <div class="textContainer2">
           <p id="taskText">Task</p>
@@ -12,38 +12,57 @@
         </div>
       </div>
       <div class="inputBox">
-        <input v-model="newTodo" placeholder="Add a new task" type="text" readonly/>
-        <button class="addTodo" @click="showPopup = true">+</button>
+        <input v-model="newTodo" placeholder="Add a new task" type="text"/>
+        <button class="addTodo" @click="openPopup()">+</button>
       </div>
       <div class="todoListBox">
-        <p class="numberTodos">Task to do - {{ numberOfTodo }}</p>
+        <p class="numberTodos">Tasks to do - {{ numberOfTodo }}</p>
         <ul>
-          <li v-for="todoGroup in todos" :key="todoGroup.id" class="toDos">
-            <div v-if="todoGroup.type === 'todo'" class="todoContent">
-              <span class="todoTitle">{{ todoGroup.title }}</span>
+          <li v-for="todo in pendingTodos" :key="todo.id" class="toDos">
+            <div v-if="todo.type === 'todo'" class="todoContent">
+              <span class="todoTitle">
+                <i v-if="todo.urgent" id="urgent" class="fa-solid fa-circle-exclamation"></i>
+                <i v-if="todo.important" id="important" class="fa-solid fa-clock"></i>
+                {{ todo.title }}
+              </span>
               <div class="todoEditButtons">
-                <button class="toDoButtonCheck">
+                <button aria-label="Mark as done" class="toDoButtonCheck" @click="markAsDone(todo.id)">
                   <i class="fa-solid fa-check"></i>
                 </button>
-                <button class="toDoButtonCheck">
+                <button aria-label="Edit task" class="toDoButtonCheck" @click="editTodo(todo)">
                   <i class="fa-solid fa-pen"></i>
                 </button>
-                <button class="toDoButtonCheck">
+                <button aria-label="Delete task" class="toDoButtonCheck" @click="removeTodo(todo.id)">
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
             </div>
           </li>
         </ul>
+        <p id="percentDone" class="numberTodos">Tasks done - {{ doneTodoPercentage }}%</p>
+        <div class="doneTodos">
+          <ul>
+            <li v-for="todo in doneTodos" :key="todo.id" class="toDos done">
+              <div class="todoContent">
+                <span class="todoTitle">{{ todo.title }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <Popup :visible="showPopup" @close="showPopup = false" @submit="handleSubmit"/>
+    <Popup
+        :todoData="isEditing ? currentTodo : {}"
+        :visible="showPopup"
+        @close="showPopup = false"
+        @submit="handleSubmit"
+    />
   </main>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
-import Popup from '/src/components/Popop.vue';
+import {computed, ref} from 'vue';
+import Popup from "/src/components/Popop.vue";
 
 export default {
   components: {
@@ -53,88 +72,132 @@ export default {
     const todos = ref([]);
     const newTodo = ref('');
     const showPopup = ref(false);
+    const isEditing = ref(false);
+    const currentTodo = ref(null);
 
     const addTodo = (todoData) => {
-      const todoGroup = {
-        id: Math.random().toString(36).slice(2, 7),
+      const todo = {
+        id: Math.random().toString(36).substr(2, 9),
         type: 'todo',
         ...todoData,
         completed: false,
       };
-      todos.value.push(todoGroup);
+      todos.value.push(todo);
     };
 
     const handleSubmit = (todoData) => {
-      addTodo(todoData);
+      if (isEditing.value) {
+        const index = todos.value.findIndex(todo => todo.id === currentTodo.value.id);
+        todos.value[index] = {...currentTodo.value, ...todoData};
+      } else {
+        addTodo(todoData);
+      }
+      showPopup.value = false;
+      isEditing.value = false;
     };
 
-    const addInputFieldsGroup = () => {
-      const inputFieldsGroup = {
-        id: Math.random().toString(36).slice(2, 7),
-        type: 'inputGroup',
-        inputs: Array(6).fill().map(() => ({ text: '' }))
-      };
-      todos.value.push(inputFieldsGroup);
+    const editTodo = (todo) => {
+      currentTodo.value = {...todo};
+      showPopup.value = true;
+      isEditing.value = true;
     };
 
-    const now = new Date();
-    const datetime = now.toLocaleString();
-    const datetimeArray = ref(datetime.split("/", 3));
-    const month = datetimeArray.value[1].split("/")[0];
-    const dateName = ref("");
+    const removeTodo = (id) => {
+      todos.value = todos.value.filter(todo => todo.id !== id);
+    };
 
-    switch (month) {
-      case "01":
-        dateName.value = "Jan";
-        break;
-      case "02":
-        dateName.value = "Feb";
-        break;
-      case "03":
-        dateName.value = "Mar";
-        break;
-      case "04":
-        dateName.value = "Apr";
-        break;
-      case "05":
-        dateName.value = "May";
-        break;
-      case "06":
-        dateName.value = "Jun";
-        break;
-      case "07":
-        dateName.value = "Jul";
-        break;
-      case "08":
-        dateName.value = "Aug";
-        break;
-      case "09":
-        dateName.value = "Sep";
-        break;
-      case "10":
-        dateName.value = "Oct";
-        break;
-      case "11":
-        dateName.value = "Nov";
-        break;
-      case "12":
-        dateName.value = "Dec";
-        break;
-    }
+    const markAsDone = (id) => {
+      const todo = todos.value.find(todo => todo.id === id);
+      if (todo) {
+        todo.completed = true;
+      }
+    };
 
-    const numberOfTodo = computed(() => todos.value.length);
+    const getDateTime = () => {
+      const now = new Date();
+      const dateArray = now.toLocaleString().split("/", 3);
+      const month = dateArray[1];
+      let dateName = '';
+      switch (month) {
+        case "01":
+          dateName = "Jan";
+          break;
+        case "02":
+          dateName = "Feb";
+          break;
+        case "03":
+          dateName = "Mar";
+          break;
+        case "04":
+          dateName = "Apr";
+          break;
+        case "05":
+          dateName = "May";
+          break;
+        case "06":
+          dateName = "Jun";
+          break;
+        case "07":
+          dateName = "Jul";
+          break;
+        case "08":
+          dateName = "Aug";
+          break;
+        case "09":
+          dateName = "Sep";
+          break;
+        case "10":
+          dateName = "Oct";
+          break;
+        case "11":
+          dateName = "Nov";
+          break;
+        case "12":
+          dateName = "Dec";
+          break;
+      }
+      return {dateArray, dateName};
+    };
+
+    const {dateArray, dateName} = getDateTime();
+    const datetimeArray = ref(dateArray);
+    const dateNameRef = ref(dateName);
+
+    const numberOfTodo = computed(() => todos.value.filter(todo => !todo.completed).length);
+    const pendingTodos = computed(() => todos.value.filter(todo => !todo.completed));
+    const doneTodos = computed(() => todos.value.filter(todo => todo.completed));
+    const doneTodoPercentage = computed(() => {
+      const totalTodos = todos.value.length;
+      const doneCount = doneTodos.value.length;
+      return totalTodos === 0 ? 0 : Math.round((doneCount / totalTodos) * 100);
+    });
+
+    const openPopup = () => {
+      newTodo.value = '';
+      showPopup.value = true;
+    };
+
 
     return {
       numberOfTodo,
       todos,
       newTodo,
       showPopup,
+      isEditing,
+      currentTodo,
       addTodo,
-      addInputFieldsGroup,
+      handleSubmit,
+      editTodo,
+      removeTodo,
+      markAsDone,
       datetimeArray,
-      dateName,
-      handleSubmit
+      dateNameRef,
+      pendingTodos,
+      doneTodos,
+      doneTodoPercentage,
+      openPopup
     };
   }
 };
 </script>
+

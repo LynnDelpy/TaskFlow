@@ -1,7 +1,7 @@
 <template>
   <div v-if="visible" class="popupOverlay">
     <div class="popupContent">
-      <h2>Add New Todo</h2>
+      <h2>{{ isEditing ? 'Edit Todo' : 'Add New Todo' }}</h2>
       <div class="inputBox">
         <label for="title">Title:</label>
         <input id="title" v-model="inputs.title" placeholder="Enter title" required type="text"/>
@@ -16,7 +16,10 @@
       </div>
       <div class="inputBox">
         <label for="category">Category:</label>
-        <input id="category" v-model="inputs.category" placeholder="Enter category" required type="text"/>
+        <select id="category" v-model="inputs.category" required>
+          <option value="" disabled>Select category</option>
+          <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
+        </select>
       </div>
       <div class="inputBox">
         <label for="important">Important:</label>
@@ -34,14 +37,14 @@
         <label for="enddate">End Date:</label>
         <input id="enddate" v-model="inputs.endDate" required type="date"/>
       </div>
-      <button class="submitTodo" @click="submitTodo">Submit</button>
+      <button class="submitTodo" @click="submitTodo">{{ isEditing ? 'Save' : 'Submit' }}</button>
       <button class="closePopup" @click="closePopup">Close</button>
     </div>
   </div>
 </template>
 
 <script>
-import {ref} from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 export default {
   props: {
@@ -49,9 +52,13 @@ export default {
       type: Boolean,
       required: true
     },
+    todoData: {
+      type: Object,
+      default: () => ({})
+    }
   },
   emits: ['close', 'submit'],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     const inputs = ref({
       title: '',
       description: '',
@@ -63,9 +70,32 @@ export default {
       endDate: ''
     });
 
+    const categories = ref(['Work', 'Personal', 'Others']);
+
+    const isEditing = ref(false);
+
+    watch(() => props.todoData, (newVal) => {
+      if (Object.keys(newVal).length) {
+        inputs.value = { ...newVal };
+        isEditing.value = true;
+      } else {
+        inputs.value = {
+          title: '',
+          description: '',
+          author: '',
+          category: '',
+          important: false,
+          urgent: false,
+          startDate: '',
+          endDate: ''
+        };
+        isEditing.value = false;
+      }
+    }, { immediate: true });
+
     const submitTodo = () => {
       if (inputs.value.title && inputs.value.description && inputs.value.author && inputs.value.category && inputs.value.startDate && inputs.value.endDate) {
-        emit('submit', {...inputs.value});
+        emit('submit', { ...inputs.value });
         closePopup();
       } else {
         alert('Please fill all the required fields');
@@ -78,8 +108,10 @@ export default {
 
     return {
       inputs,
+      categories,
       submitTodo,
-      closePopup
+      closePopup,
+      isEditing
     };
   }
 };

@@ -13,6 +13,7 @@ $border-color: #381d6b;
 $font-color-white: #ffffff;
 $font-color-gray: #777779;
 $font-color-purple: #9e78cf;
+$font-color-green: #5c9f8a;
 $text-padding: 3.8vw;
 $container-padding: 3%;
 $todo-background: #16101c;
@@ -22,6 +23,7 @@ ul {
 }
 
 body {
+  overflow: hidden;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -98,7 +100,6 @@ body {
       }
     }
 
-
     .todoListBox {
       margin-top: 5vh;
       display: flex;
@@ -109,8 +110,13 @@ body {
       .numberTodos {
         color: $font-color-white;
         font-size: 15pt;
-        margin-left: -11.5vw;
         margin-bottom: 0;
+        margin-left: -11.5vw;
+
+      }
+
+      #percentDone {
+        margin-left: -10.5vw;
       }
 
       .toDos {
@@ -134,6 +140,16 @@ body {
           .todoTitle {
             flex-grow: 1;
             padding-right: 1vw;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            #urgent{
+              padding-right: 0.5vw;
+            }
+            #important{
+              padding-right: 0.5vw;
+            }
           }
 
           .todoEditButtons {
@@ -147,6 +163,20 @@ body {
               color: $font-color-purple;
               font-size: 20pt;
             }
+          }
+        }
+      }
+
+      .doneTodos {
+        color: $font-color-green;
+
+        .todoContent {
+          color: $font-color-green;
+
+          .todoTitle {
+            color: $font-color-green;
+            text-decoration: line-through;
+
           }
         }
       }

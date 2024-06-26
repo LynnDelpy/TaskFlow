@@ -36,6 +36,7 @@ ul {
 }
 
 body {
+  overflow: hidden;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -118,8 +119,11 @@ body {
 .grid .applicationContainer .todoListBox .numberTodos {
   color: #ffffff;
   font-size: 15pt;
-  margin-left: -11.5vw;
   margin-bottom: 0;
+  margin-left: -11.5vw;
+}
+.grid .applicationContainer .todoListBox #percentDone {
+  margin-left: -10.5vw;
 }
 .grid .applicationContainer .todoListBox .toDos {
   background-color: #16101c;
@@ -142,6 +146,15 @@ body {
 .grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle {
   flex-grow: 1;
   padding-right: 1vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #urgent {
+  padding-right: 0.5vw;
+}
+.grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #important {
+  padding-right: 0.5vw;
 }
 .grid .applicationContainer .todoListBox .toDos .todoContent .todoEditButtons {
   display: flex;
@@ -153,6 +166,16 @@ body {
   border-radius: 10pt;
   color: #9e78cf;
   font-size: 20pt;
+}
+.grid .applicationContainer .todoListBox .doneTodos {
+  color: #5c9f8a;
+}
+.grid .applicationContainer .todoListBox .doneTodos .todoContent {
+  color: #5c9f8a;
+}
+.grid .applicationContainer .todoListBox .doneTodos .todoContent .todoTitle {
+  color: #5c9f8a;
+  text-decoration: line-through;
 }
 
 /*# sourceMappingURL=main.css.map */
