@@ -8,7 +8,7 @@
       </div>
       <div class="inputBox">
         <label for="description">Description:</label>
-        <textarea id="description" v-model="inputs.description" placeholder="Enter description" required></textarea>
+        <input id="description" v-model="inputs.description" placeholder="Enter description" required type="text"/>
       </div>
       <div class="inputBox">
         <label for="author">Author:</label>
@@ -94,13 +94,24 @@ export default {
     }, { immediate: true });
 
     const submitTodo = () => {
-      if (inputs.value.title && inputs.value.description && inputs.value.author && inputs.value.category && inputs.value.startDate && inputs.value.endDate) {
+      const { title, description, author, category, startDate, endDate } = inputs.value;
+
+      if (title && description && author && category && startDate && endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+
+        if (end < start) {
+          alert('End date cannot be before start date');
+          return;
+        }
+
         emit('submit', { ...inputs.value });
         closePopup();
       } else {
         alert('Please fill all the required fields');
       }
     };
+
 
     const closePopup = () => {
       emit('close');

@@ -183,3 +183,147 @@ body {
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .grid {
+    .applicationContainer {
+      grid-column: 3 / 11;
+      border-radius: 40pt;
+    }
+  }
+
+  .textContainers {
+    .textContainer1,
+    .textContainer2 {
+      font-size: 40pt;
+    }
+  }
+
+  .inputBox {
+    input[type=text] {
+      width: 20vw;
+      border-radius: 8pt;
+    }
+
+    .addTodo {
+      width: 5vw;
+      border-radius: 8pt;
+    }
+  }
+
+  .todoListBox {
+    .toDos {
+      width: 22vw;
+      border-radius: 8pt;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .grid {
+    .applicationContainer {
+      grid-column: 2 / 12;
+      border-radius: 30pt;
+    }
+  }
+
+  .textContainers {
+    .textContainer1,
+    .textContainer2 {
+      font-size: 35pt;
+    }
+  }
+
+  .inputBox {
+    input[type=text] {
+      width: 25vw;
+      border-radius: 6pt;
+    }
+
+    .addTodo {
+      width: 6vw;
+      border-radius: 6pt;
+    }
+  }
+
+  .todoListBox {
+    .toDos {
+      width: 25vw;
+      border-radius: 6pt;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    .applicationContainer {
+      grid-column: 1 / 13;
+      border-radius: 20pt;
+    }
+  }
+
+  .textContainers {
+    flex-direction: column;
+
+    .textContainer1,
+    .textContainer2 {
+      font-size: 30pt;
+      text-align: center;
+      padding: 0;
+    }
+
+    .textContainer1 {
+      margin-bottom: 2vh;
+    }
+  }
+
+  .inputBox {
+    flex-direction: column;
+
+    input[type=text] {
+      width: 50vw;
+      margin-bottom: 1vh;
+      border-radius: 5pt;
+    }
+
+    .addTodo {
+      width: 10vw;
+      border-radius: 5pt;
+    }
+  }
+
+  .todoListBox {
+    .toDos {
+      width: 50vw;
+      border-radius: 5pt;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .textContainers {
+    .textContainer1,
+    .textContainer2 {
+      font-size: 25pt;
+    }
+  }
+
+  .inputBox {
+    input[type=text] {
+      width: 70vw;
+      border-radius: 4pt;
+    }
+
+    .addTodo {
+      width: 12vw;
+      border-radius: 4pt;
+    }
+  }
+
+  .todoListBox {
+    .toDos {
+      width: 70vw;
+      border-radius: 4pt;
+    }
+  }
+}

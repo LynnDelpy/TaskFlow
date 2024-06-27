@@ -1,23 +1,141 @@
+$background-gradient: linear-gradient(#7aceb0, #43685a);
+$container-bg-color: #0d0713;
+$border-color: #381d6b;
+$font-color-white: #ffffff;
+$font-color-gray: #777779;
+$font-color-purple: #9e78cf;
+$font-color-purple-light: lighten(#9e78cf, 10%);
+$font-color-green: #5c9f8a;
+$text-padding: 3.8vw;
+$container-padding: 3%;
+$todo-background: #16101c;
+
+$border-radius-large: 20pt;
+$border-radius-medium: 16pt;
+$border-radius-small: 10pt;
+$border-radius-extra-small: 8pt;
+
+$button-height: 4.5vh;
+$input-height: 4vh;
+$button-width: 10vw;
+$font-size: 15pt;
+
 .popupOverlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .popupContent {
-  background: white;
+  background-color: $container-bg-color;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: $border-radius-large;
   text-align: center;
+  width: 20vw;
+  color: $font-color-white;
+  font-family: 'M_PLUS_Rounded_1c';
 }
+
 .inputBox {
   margin-bottom: 10px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: $font-color-white;
+  }
+
+  input[type=text], input[type=date], select {
+    padding-left: 0.4vw;
+    color: $font-color-gray;
+    background-color: $container-bg-color;
+    border: solid 1px $border-color;
+    border-radius: $border-radius-small;
+    height: $input-height;
+    width: 100%;
+  }
+
+  select {
+    height: $input-height;
+    appearance: none;
+    padding-right: 1.5em;
+    background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right center;
+    background-size: 0.65em;
+  }
+
+  input[type=checkbox] {
+    width: auto;
+    margin-right: 10px;
+  }
 }
+
 .submitTodo, .closePopup {
   margin: 10px;
+  height: $button-height;
+  width: $button-width;
+  background-color: $font-color-purple;
+  border: solid 1px $border-color;
+  border-radius: $border-radius-small;
+  color: $font-color-white;
+  font-size: $font-size;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $font-color-purple-light;
+  }
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 1200px) {
+  .popupContent {
+    border-radius: $border-radius-medium;
+  }
+
+  .submitTodo, .closePopup {
+    width: 12vw;
+    border-radius: $border-radius-extra-small;
+  }
+}
+
+@media (max-width: 992px) {
+  .popupContent {
+    border-radius: 14pt;
+  }
+
+  .submitTodo, .closePopup {
+    width: 15vw;
+    border-radius: 6pt;
+  }
+}
+
+@media (max-width: 768px) {
+  .popupContent {
+    border-radius: 12pt;
+  }
+
+  .submitTodo, .closePopup {
+    width: 20vw;
+    border-radius: 5pt;
+  }
+
+  .inputBox input[type=text], .inputBox input[type=date], .inputBox select {
+    height: 5vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .popupContent {
+    border-radius: 10pt;
+  }
+
+  .submitTodo, .closePopup {
+    width: 25vw;
+    border-radius: 4pt;
+  }
 }
