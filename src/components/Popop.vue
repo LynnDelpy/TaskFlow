@@ -17,7 +17,7 @@
       <div class="inputBox">
         <label for="category">Category:</label>
         <select id="category" v-model="inputs.category" required>
-          <option value="" disabled>Select category</option>
+          <option disabled value="">Select category</option>
           <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
         </select>
       </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { ref, watch, onMounted } from 'vue';
+import {ref, watch} from 'vue';
 
 export default {
   props: {
@@ -58,7 +58,7 @@ export default {
     }
   },
   emits: ['close', 'submit'],
-  setup(props, { emit }) {
+  setup(props, {emit}) {
     const inputs = ref({
       title: '',
       description: '',
@@ -70,13 +70,13 @@ export default {
       endDate: ''
     });
 
-    const categories = ref(['Work', 'Personal', 'Others']);
+    const categories = ref(['Work', 'Personal', 'Travel', 'Others']);
 
     const isEditing = ref(false);
 
     watch(() => props.todoData, (newVal) => {
       if (Object.keys(newVal).length) {
-        inputs.value = { ...newVal };
+        inputs.value = {...newVal};
         isEditing.value = true;
       } else {
         inputs.value = {
@@ -91,10 +91,10 @@ export default {
         };
         isEditing.value = false;
       }
-    }, { immediate: true });
+    }, {immediate: true});
 
     const submitTodo = () => {
-      const { title, description, author, category, startDate, endDate } = inputs.value;
+      const {title, description, author, category, startDate, endDate} = inputs.value;
 
       if (title && description && author && category && startDate && endDate) {
         const start = new Date(startDate);
@@ -105,7 +105,7 @@ export default {
           return;
         }
 
-        emit('submit', { ...inputs.value });
+        emit('submit', {...inputs.value});
         closePopup();
       } else {
         alert('Please fill all the required fields');
