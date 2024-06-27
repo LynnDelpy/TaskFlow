@@ -7,8 +7,7 @@
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
-}
+  align-items: center; }
 
 .popupContent {
   background-color: #0d0713;
@@ -17,37 +16,31 @@
   text-align: center;
   width: 20vw;
   color: #ffffff;
-  font-family: "M_PLUS_Rounded_1c";
-}
+  font-family: 'M_PLUS_Rounded_1c'; }
 
 .inputBox {
-  margin-bottom: 10px;
-}
-.inputBox label {
-  display: block;
-  margin-bottom: 5px;
-  color: #ffffff;
-}
-.inputBox input[type=text], .inputBox input[type=date], .inputBox select {
-  padding-left: 0.4vw;
-  color: #777779;
-  background-color: #0d0713;
-  border: solid 1px #381d6b;
-  border-radius: 10pt;
-  height: 4vh;
-  width: 100%;
-}
-.inputBox select {
-  height: 4vh;
-  appearance: none;
-  padding-right: 1.5em;
-  background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right center;
-  background-size: 0.65em;
-}
-.inputBox input[type=checkbox] {
-  width: auto;
-  margin-right: 10px;
-}
+  margin-bottom: 10px; }
+  .inputBox label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; }
+  .inputBox input[type=text], .inputBox input[type=date], .inputBox select {
+    padding-left: 0.4vw;
+    color: #777779;
+    background-color: #0d0713;
+    border: solid 1px #381d6b;
+    border-radius: 10pt;
+    height: 4vh;
+    width: 100%; }
+  .inputBox select {
+    height: 4vh;
+    appearance: none;
+    padding-right: 1.5em;
+    background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right center;
+    background-size: 0.65em; }
+  .inputBox input[type=checkbox] {
+    width: auto;
+    margin-right: 10px; }
 
 .submitTodo, .closePopup {
   margin: 10px;
@@ -58,60 +51,48 @@
   border-radius: 10pt;
   color: #ffffff;
   font-size: 15pt;
-  cursor: pointer;
-}
-.submitTodo:hover, .closePopup:hover {
-  background-color: #b99edc;
-}
+  cursor: pointer; }
+  .submitTodo:hover, .closePopup:hover {
+    background-color: #b99edc; }
 
 @media (max-width: 1200px) {
   .popupContent {
-    border-radius: 16pt;
-  }
+    border-radius: 16pt; }
+
   .submitTodo, .closePopup {
     width: 12vw;
-    border-radius: 8pt;
-  }
-}
+    border-radius: 8pt; } }
 @media (max-width: 992px) {
   .popupContent {
-    border-radius: 14pt;
-  }
+    border-radius: 14pt; }
+
   .submitTodo, .closePopup {
     width: 15vw;
-    border-radius: 6pt;
-  }
-}
+    border-radius: 6pt; } }
 @media (max-width: 768px) {
   .popupContent {
-    border-radius: 12pt;
-  }
+    border-radius: 12pt; }
+
   .submitTodo, .closePopup {
     width: 20vw;
-    border-radius: 5pt;
-  }
+    border-radius: 5pt; }
+
   .inputBox input[type=text], .inputBox input[type=date], .inputBox select {
-    height: 5vh;
-  }
-}
+    height: 5vh; } }
 @media (max-width: 576px) {
   .popupContent {
-    border-radius: 10pt;
-  }
+    border-radius: 10pt; }
+
   .submitTodo, .closePopup {
     width: 25vw;
-    border-radius: 4pt;
-  }
-}
+    border-radius: 4pt; } }
 @font-face {
-  font-family: "M_PLUS_Rounded_1c";
+  font-family: 'M_PLUS_Rounded_1c';
   src: url("fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf");
   font-weight: normal;
-  font-style: normal;
-}
+  font-style: normal; }
 ul {
-  list-style-type: none;
-}
+  list-style-type: none; }
 
 body {
   overflow: hidden;
@@ -122,235 +103,196 @@ body {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  font-family: "M_PLUS_Rounded_1c";
-}
+  font-family: 'M_PLUS_Rounded_1c'; }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
-.grid .applicationContainer {
-  margin-top: 10%;
-  border-radius: 50pt;
-  height: 100vh;
-  background-color: #0d0713;
-  grid-column: 4/10;
-  padding: 3%;
-}
-.grid .applicationContainer .textContainers {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-.grid .applicationContainer .textContainers .textContainer1,
-.grid .applicationContainer .textContainers .textContainer2 {
-  font-size: 50pt;
-  color: #ffffff;
-  text-align: left;
-}
-.grid .applicationContainer .textContainers .textContainer1 #datetime, .grid .applicationContainer .textContainers .textContainer1 #datetime2,
-.grid .applicationContainer .textContainers .textContainer1 #taskText, .grid .applicationContainer .textContainers .textContainer1 #flowText,
-.grid .applicationContainer .textContainers .textContainer2 #datetime,
-.grid .applicationContainer .textContainers .textContainer2 #datetime2,
-.grid .applicationContainer .textContainers .textContainer2 #taskText,
-.grid .applicationContainer .textContainers .textContainer2 #flowText {
-  margin: 0;
-}
-.grid .applicationContainer .textContainers .textContainer1 {
-  padding-right: 3.8vw;
-}
-.grid .applicationContainer .textContainers .textContainer2 {
-  padding-left: 3.8vw;
-  margin-bottom: 5vh;
-}
-.grid .applicationContainer .inputBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.grid .applicationContainer .inputBox input[type=text] {
-  padding-left: 0.4vw;
-  color: #777779;
-  background-color: #0d0713;
-  border: solid 1px #381d6b;
-  border-radius: 10pt;
-  height: 4vh;
-  width: 17vw;
-}
-.grid .applicationContainer .inputBox .addTodo {
-  margin-left: 0.5vw;
-  height: 4.5vh;
-  width: 4.5vh;
-  background-color: #9e78cf;
-  border: solid 1px #381d6b;
-  border-radius: 10pt;
-  color: #ffffff;
-  font-size: 20pt;
-}
-.grid .applicationContainer .todoListBox {
-  margin-top: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 2vw;
-}
-.grid .applicationContainer .todoListBox .numberTodos {
-  color: #ffffff;
-  font-size: 15pt;
-  margin-bottom: 0;
-  margin-left: -11.5vw;
-}
-.grid .applicationContainer .todoListBox #percentDone {
-  margin-left: -10.5vw;
-}
-.grid .applicationContainer .todoListBox .toDos {
-  background-color: #16101c;
-  color: #9e78cf;
-  padding: 1vw;
-  font-size: 15pt;
-  border-radius: 10pt;
-  margin-bottom: 1vh;
-  width: 19vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle {
-  flex-grow: 1;
-  padding-right: 1vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #urgent {
-  padding-right: 0.5vw;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #important {
-  padding-right: 0.5vw;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent .todoEditButtons {
-  display: flex;
-  gap: 0.5vw;
-}
-.grid .applicationContainer .todoListBox .toDos .todoContent .todoEditButtons .toDoButtonCheck {
-  background-color: #16101c;
-  border: solid 1px #16101c;
-  border-radius: 10pt;
-  color: #9e78cf;
-  font-size: 20pt;
-}
-.grid .applicationContainer .todoListBox .doneTodos {
-  color: #5c9f8a;
-}
-.grid .applicationContainer .todoListBox .doneTodos .todoContent {
-  color: #5c9f8a;
-}
-.grid .applicationContainer .todoListBox .doneTodos .todoContent .todoTitle {
-  color: #5c9f8a;
-  text-decoration: line-through;
-}
+  grid-template-columns: repeat(12, 1fr); }
+  .grid .applicationContainer {
+    margin-top: 10%;
+    border-radius: 50pt;
+    height: 100vh;
+    background-color: #0d0713;
+    grid-column: 4 / 10;
+    padding: 3%; }
+    .grid .applicationContainer .textContainers {
+      display: flex;
+      justify-content: center;
+      text-align: center; }
+      .grid .applicationContainer .textContainers .textContainer1,
+      .grid .applicationContainer .textContainers .textContainer2 {
+        font-size: 50pt;
+        color: #ffffff;
+        text-align: left; }
+        .grid .applicationContainer .textContainers .textContainer1 #datetime, .grid .applicationContainer .textContainers .textContainer1 #datetime2,
+        .grid .applicationContainer .textContainers .textContainer1 #taskText, .grid .applicationContainer .textContainers .textContainer1 #flowText,
+        .grid .applicationContainer .textContainers .textContainer2 #datetime,
+        .grid .applicationContainer .textContainers .textContainer2 #datetime2,
+        .grid .applicationContainer .textContainers .textContainer2 #taskText,
+        .grid .applicationContainer .textContainers .textContainer2 #flowText {
+          margin: 0; }
+      .grid .applicationContainer .textContainers .textContainer1 {
+        padding-right: 3.8vw; }
+      .grid .applicationContainer .textContainers .textContainer2 {
+        padding-left: 3.8vw;
+        margin-bottom: 5vh; }
+    .grid .applicationContainer .inputBox {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .grid .applicationContainer .inputBox input[type=text] {
+        padding-left: 0.4vw;
+        color: #777779;
+        background-color: #0d0713;
+        border: solid 1px #381d6b;
+        border-radius: 10pt;
+        height: 4vh;
+        width: 17vw; }
+      .grid .applicationContainer .inputBox .addTodo {
+        margin-left: 0.5vw;
+        height: 4.5vh;
+        width: 4.5vh;
+        background-color: #9e78cf;
+        border: solid 1px #381d6b;
+        border-radius: 10pt;
+        color: #ffffff;
+        font-size: 20pt; }
+    .grid .applicationContainer .todoListBox {
+      margin-top: 5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 2vw; }
+      .grid .applicationContainer .todoListBox .numberTodos {
+        color: #ffffff;
+        font-size: 15pt;
+        margin-bottom: 0;
+        margin-left: -11.5vw; }
+      .grid .applicationContainer .todoListBox #percentDone {
+        margin-left: -10.5vw; }
+      .grid .applicationContainer .todoListBox .toDos {
+        background-color: #16101c;
+        color: #9e78cf;
+        padding: 1vw;
+        font-size: 15pt;
+        border-radius: 10pt;
+        margin-bottom: 1vh;
+        width: 19vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .grid .applicationContainer .todoListBox .toDos .todoContent {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%; }
+          .grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle {
+            flex-grow: 1;
+            padding-right: 1vw;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; }
+            .grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #urgent {
+              padding-right: 0.5vw; }
+            .grid .applicationContainer .todoListBox .toDos .todoContent .todoTitle #important {
+              padding-right: 0.5vw; }
+          .grid .applicationContainer .todoListBox .toDos .todoContent .todoEditButtons {
+            display: flex;
+            gap: 0.5vw; }
+            .grid .applicationContainer .todoListBox .toDos .todoContent .todoEditButtons .toDoButtonCheck {
+              background-color: #16101c;
+              border: solid 1px #16101c;
+              border-radius: 10pt;
+              color: #9e78cf;
+              font-size: 20pt; }
+      .grid .applicationContainer .todoListBox .doneTodos {
+        color: #5c9f8a; }
+        .grid .applicationContainer .todoListBox .doneTodos .todoContent {
+          color: #5c9f8a; }
+          .grid .applicationContainer .todoListBox .doneTodos .todoContent .todoTitle {
+            color: #5c9f8a;
+            text-decoration: line-through; }
 
 @media (max-width: 1200px) {
   .grid .applicationContainer {
-    grid-column: 3/11;
-    border-radius: 40pt;
-  }
+    grid-column: 3 / 11;
+    border-radius: 40pt; }
+
   .textContainers .textContainer1,
   .textContainers .textContainer2 {
-    font-size: 40pt;
-  }
+    font-size: 40pt; }
+
   .inputBox input[type=text] {
     width: 20vw;
-    border-radius: 8pt;
-  }
+    border-radius: 8pt; }
   .inputBox .addTodo {
     width: 5vw;
-    border-radius: 8pt;
-  }
+    border-radius: 8pt; }
+
   .todoListBox .toDos {
     width: 22vw;
-    border-radius: 8pt;
-  }
-}
+    border-radius: 8pt; } }
 @media (max-width: 992px) {
   .grid .applicationContainer {
-    grid-column: 2/12;
-    border-radius: 30pt;
-  }
+    grid-column: 2 / 12;
+    border-radius: 30pt; }
+
   .textContainers .textContainer1,
   .textContainers .textContainer2 {
-    font-size: 35pt;
-  }
+    font-size: 35pt; }
+
   .inputBox input[type=text] {
     width: 25vw;
-    border-radius: 6pt;
-  }
+    border-radius: 6pt; }
   .inputBox .addTodo {
     width: 6vw;
-    border-radius: 6pt;
-  }
+    border-radius: 6pt; }
+
   .todoListBox .toDos {
     width: 25vw;
-    border-radius: 6pt;
-  }
-}
+    border-radius: 6pt; } }
 @media (max-width: 768px) {
   .grid .applicationContainer {
-    grid-column: 1/13;
-    border-radius: 20pt;
-  }
+    grid-column: 1 / 13;
+    border-radius: 20pt; }
+
   .textContainers {
-    flex-direction: column;
-  }
-  .textContainers .textContainer1,
-  .textContainers .textContainer2 {
-    font-size: 30pt;
-    text-align: center;
-    padding: 0;
-  }
-  .textContainers .textContainer1 {
-    margin-bottom: 2vh;
-  }
+    flex-direction: column; }
+    .textContainers .textContainer1,
+    .textContainers .textContainer2 {
+      font-size: 30pt;
+      text-align: center;
+      padding: 0; }
+    .textContainers .textContainer1 {
+      margin-bottom: 2vh; }
+
   .inputBox {
-    flex-direction: column;
-  }
-  .inputBox input[type=text] {
-    width: 50vw;
-    margin-bottom: 1vh;
-    border-radius: 5pt;
-  }
-  .inputBox .addTodo {
-    width: 10vw;
-    border-radius: 5pt;
-  }
+    flex-direction: column; }
+    .inputBox input[type=text] {
+      width: 50vw;
+      margin-bottom: 1vh;
+      border-radius: 5pt; }
+    .inputBox .addTodo {
+      width: 10vw;
+      border-radius: 5pt; }
+
   .todoListBox .toDos {
     width: 50vw;
-    border-radius: 5pt;
-  }
-}
+    border-radius: 5pt; } }
 @media (max-width: 576px) {
   .textContainers .textContainer1,
   .textContainers .textContainer2 {
-    font-size: 25pt;
-  }
+    font-size: 25pt; }
+
   .inputBox input[type=text] {
     width: 70vw;
-    border-radius: 4pt;
-  }
+    border-radius: 4pt; }
   .inputBox .addTodo {
     width: 12vw;
-    border-radius: 4pt;
-  }
+    border-radius: 4pt; }
+
   .todoListBox .toDos {
     width: 70vw;
-    border-radius: 4pt;
-  }
-}
+    border-radius: 4pt; } }
 
 /*# sourceMappingURL=main.css.map */
